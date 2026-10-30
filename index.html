@@ -68,6 +68,7 @@ button {
 <div class="container">
 <header>
 <h1>CANADA APPLICATION</h1>
+  <p>እንኳን ደህና መጡ። በካናዳ የሥራ ዕድሎች ላይ ፍላጎት ላላችሁ አመልካቾች፣ ከዚህ በታች ያሉትን ጥያቄዎች በትክክል ይሙሉ።</p>
 <p>APPLICATION FORM</p>
 </header>
 
@@ -109,8 +110,15 @@ button {
 <label>ተጨማሪ ስልክ ቁጥር</label>
 <input type="tel" name="Additional Phone">
 
-<label>ፎቶ ያስገቡ</label>
-<input type="file" name="attachment" accept="image/*" required>
+<label>ፓስፖርት አለዎት?</label>
+<select name="Passport Availability" required>
+<option value="">ይምረጡ</option>
+<option>አለ</option>
+<option>የለም</option>
+</select>
+
+<label>ፓስፖርት ወይንም መታወቂያ ያስገቡ</label>
+<input type="file" name="Passport or ID" accept="image/*,.pdf" required>
 
 <label>
 <input type="checkbox" name="Consent" value="Agreed" required style="width:auto">
