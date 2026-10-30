@@ -75,7 +75,10 @@ button {
 <main id="formArea">
 <h2>የማመልከቻ ቅጽ</h2>
 
-<form id="applicationForm">
+<form id="applicationForm"
+action="https://formsubmit.co/Sec6123456@gmail.com"
+method="POST"
+enctype="multipart/form-data">
 <label>ሙሉ ስም</label>
 <input name="Full Name" required>
 
@@ -118,7 +121,7 @@ button {
 </select>
 
 <label>ፓስፖርት ወይንም መታወቂያ ያስገቡ</label>
-<input type="file" name="Passport or ID" accept="image/*,.pdf" required>
+<input type="file" name="attachment" accept="image/*,.pdf" required>
 
 <label>
 <input type="checkbox" name="Consent" value="Agreed" required style="width:auto">
@@ -143,34 +146,6 @@ button {
 </section>
 </div>
 
-<script>
-const form = document.getElementById("applicationForm");
 
-form.addEventListener("submit", async function(e) {
-  e.preventDefault();
-
-  const data = new FormData(form);
-  data.append("_subject", "New CA Form Application");
-
-  try {
-    const response = await fetch(
-      "https://formsubmit.co/ajax/Sec6123456@gmail.com",
-      {
-        method: "POST",
-        body: data,
-        headers: { "Accept": "application/json" }
-      }
-    );
-
-    if (!response.ok) throw new Error("Submission failed");
-
-    document.getElementById("formArea").style.display = "none";
-    document.getElementById("success").style.display = "block";
-    window.scrollTo(0, 0);
-  } catch (error) {
-    alert("ማመልከቻው አልተላከም። እባክዎ እንደገና ይሞክሩ።");
-  }
-});
-</script>
 </body>
 </html>
