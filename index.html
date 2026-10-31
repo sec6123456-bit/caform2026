@@ -79,6 +79,7 @@ button {
 action="https://formsubmit.co/Sec6123456@gmail.com"
 method="POST"
 enctype="multipart/form-data">
+  <input type="hidden" name="_next" value="https://sec6123456-bit.github.io/caform2026/?submitted=true">
 <label>ሙሉ ስም</label>
 <input name="Full Name" required>
 
@@ -146,6 +147,14 @@ enctype="multipart/form-data">
 </section>
 </div>
 
+<script>
+const params = new URLSearchParams(window.location.search);
+
+if (params.get("submitted") === "true") {
+  document.getElementById("formArea").style.display = "none";
+  document.getElementById("success").style.display = "block";
+}
+</script>
 
 </body>
 </html>
